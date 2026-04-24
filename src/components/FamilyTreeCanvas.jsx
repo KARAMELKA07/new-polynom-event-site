@@ -3,9 +3,10 @@ import CharacterModal from './CharacterModal';
 import {
   familyNodes,
   mapFramePaths,
-  mapStory,
   STAGE_SIZE,
 } from '../data/familyTree';
+
+const mapTitleImage = new URL('../../promo/Group 49.png', import.meta.url).href;
 
 const MIN_SCALE = 0.24;
 const MAX_SCALE = 2;
@@ -93,6 +94,44 @@ function FamilyTreeCanvas() {
     () => familyNodes.find((node) => node.id === selectedNodeId) ?? null,
     [selectedNodeId],
   );
+
+  useEffect(() => {
+    let isCancelled = false;
+    const preloadedImages = [];
+
+    const preloadModalPhotos = () => {
+      if (isCancelled) {
+        return;
+      }
+
+      familyNodes.forEach((node) => {
+        if (!node.modalPhoto) {
+          return;
+        }
+
+        const image = new Image();
+        image.decoding = 'async';
+        image.src = node.modalPhoto;
+        preloadedImages.push(image);
+      });
+    };
+
+    const idleId = 'requestIdleCallback' in window
+      ? window.requestIdleCallback(preloadModalPhotos, { timeout: 2500 })
+      : window.setTimeout(preloadModalPhotos, 1200);
+
+    return () => {
+      isCancelled = true;
+
+      if ('cancelIdleCallback' in window) {
+        window.cancelIdleCallback(idleId);
+      } else {
+        window.clearTimeout(idleId);
+      }
+
+      preloadedImages.length = 0;
+    };
+  }, []);
 
   useEffect(() => {
     const viewport = viewportRef.current;
@@ -360,11 +399,9 @@ function FamilyTreeCanvas() {
       <section className="map-section" id="map">
         <div className="map-card">
           <div className="map-toolbar">
-            <div className="map-tip">
-              Все герои теперь собраны по одному шаблону: роль, круг под фото,
-              имя и короткое описание. Круги остались кликабельными, а тексты и
-              имена можно менять прямо в данных карты.
-            </div>
+            <p className="map-hint">
+              Двигайте карту и нажимайте на портреты, чтобы познакомиться с героями.
+            </p>
 
             <div className="map-controls">
               <button type="button" onClick={() => handleZoom(1)} aria-label="Приблизить">
@@ -414,13 +451,21 @@ function FamilyTreeCanvas() {
                 aria-hidden="true"
               >
                 {mapFramePaths.map((path) => (
-                  <path key={path.id} d={path.d} />
+                  <path
+                    key={path.id}
+                    className={path.variant ? `is-${path.variant}` : undefined}
+                    d={path.d}
+                  />
                 ))}
               </svg>
 
               <div className="map-story">
-                <h2>{renderLines(mapStory.title, 'story-title')}</h2>
-                <p>{mapStory.description}</p>
+                <img
+                  className="map-story__image"
+                  src={mapTitleImage}
+                  alt="Достать хиты: семейное расследование"
+                  draggable="false"
+                />
               </div>
 
               {familyNodes.map((node) => {

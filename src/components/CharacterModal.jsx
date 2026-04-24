@@ -31,14 +31,16 @@ function CharacterModal({ character, onClose }) {
     .join('')
     .toUpperCase();
 
-  const portraitStyle = character.photo
-    ? { backgroundImage: `url(${character.photo})` }
+  const modalPhoto = character.modalPhoto ?? character.photo;
+  const cardStyle = modalPhoto
+    ? { '--modal-photo': `url(${modalPhoto})` }
     : undefined;
 
   return (
     <div className="modal-backdrop" onClick={onClose} role="presentation">
       <div
-        className="modal-card"
+        className={`modal-card${modalPhoto ? ' has-modal-photo' : ''}`}
+        style={cardStyle}
         onClick={(event) => event.stopPropagation()}
         role="dialog"
         aria-modal="true"
@@ -53,21 +55,15 @@ function CharacterModal({ character, onClose }) {
           ×
         </button>
 
-        <div
-          className={`modal-portrait accent-${character.accent}${character.photo ? ' has-photo' : ''}`}
-          style={portraitStyle}
-        >
-          {!character.photo ? <span>{initials}</span> : null}
-        </div>
+        {!modalPhoto ? <div className="modal-initials">{initials}</div> : null}
 
-        <p className="modal-label">{character.label}</p>
-        <h2 id={`modal-title-${character.id}`} className="modal-title">
-          {character.name}
-        </h2>
-        {character.summary ? (
-          <p className="modal-summary">{character.summary}</p>
-        ) : null}
-        <p className="modal-description">{character.modalText}</p>
+        <div className="modal-content">
+          <p className="modal-label">{character.label}</p>
+          <h2 id={`modal-title-${character.id}`} className="modal-title">
+            {character.name}
+          </h2>
+          <p className="modal-description">{character.modalText}</p>
+        </div>
 
         <div className="modal-facts">
           {character.facts.map((fact) => (
