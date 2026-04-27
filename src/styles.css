@@ -49,7 +49,7 @@
   --site-kicker-weight: 700;
   --site-kicker-second-line-weight: 600;
   --site-kicker-main-size: clamp(1.08rem, 4.8vw, 1.4rem);
-  --site-kicker-line-size: clamp(0.84rem, 3.8vw, 1.12rem);
+  --site-kicker-line-size: clamp(0.75rem, 3.7vw, 1.1rem);
   --shared-copy-text-size: 0.86rem;
   --shared-copy-line-height: 1.72;
   --section-title-font: var(--font-heading);
@@ -135,12 +135,14 @@ a {
 }
 
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 20;
   width: min(430px, 100vw);
   min-height: 58px;
-  margin: 0 auto;
+  margin: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -228,7 +230,7 @@ a {
 .page {
   width: min(430px, 100vw);
   margin: 0 auto;
-  padding: 16px 8px 36px;
+  padding: 92px 8px 36px;
 }
 
 .intro-card,
@@ -941,6 +943,11 @@ a {
   text-shadow: 0 2px 12px rgba(40, 0, 12, 0.34);
 }
 
+.modal-label.is-multiline {
+  white-space: pre-line;
+  line-height: 1.16;
+}
+
 .modal-title {
   margin: 20px 0 0;
   text-align: center;
@@ -1189,7 +1196,7 @@ a {
 
   .page {
     width: min(430px, 100vw);
-    padding: 10px 8px 24px;
+    padding: 86px 8px 24px;
   }
 
   .intro-card,
@@ -1232,7 +1239,7 @@ a {
   }
 
   .map-viewport {
-    height: min(70vh, 620px);
+    height: min(70vh, 420px);
     border-radius: 18px;
   }
 

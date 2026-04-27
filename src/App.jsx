@@ -6,10 +6,8 @@ const recordPeopleImage = new URL('../promo/пластинка с людьми.p
 const logoImage = new URL('../promo/ЛОГО.png', import.meta.url).href;
 const menuLinks = [
   { label: 'Начало', href: '#top' },
-  { label: 'О спектакле', href: '#about' },
   { label: 'Кто виновен', href: '#suspect-poll' },
   { label: 'Карта героев', href: '#map' },
-  { label: 'Плейлист', href: '#playlist' },
   { label: 'Отзыв', href: '#feedback' },
   { label: 'Соцсети', href: '#contacts' },
 ];
@@ -53,8 +51,8 @@ function App() {
 
       <main className="page">
         <header className="site-kicker">
-          <span className="site-kicker__line site-kicker__line--main">Рады приветствовать на</span>
-          <span className="site-kicker__line">детективно-комедийном спектакле</span>
+          <span className="site-kicker__line site-kicker__line--main">Рады приветствовать Вас</span>
+          <span className="site-kicker__line">на детективно-комедийном спектакле</span>
           <span className="site-kicker__line">вокальной студии "New-Polynom"</span>
         </header>
 
@@ -72,32 +70,7 @@ function App() {
         <SuspectPoll />
         <FamilyTreeCanvas />
 
-        <section className="playlist-section" id="playlist" aria-labelledby="playlist-title">
-          <div className="playlist-card">
-            <div className="playlist-card__copy">
-              <h2 id="playlist-title">Плейлист отчетника</h2>
-            </div>
 
-            <div className="playlist-frame">
-              <iframe
-                title='Отчетник "Достать Хиты" на Яндекс Музыке'
-                frameBorder="0"
-                allow="clipboard-write"
-                src="https://music.yandex.ru/iframe/playlist/ikeashanin/1015"
-              >
-                Слушайте{' '}
-                <a href="https://music.yandex.ru/playlists/fd33df88-0a05-311b-892a-ca7f987baf45?utm_source=web&utm_medium=copy_link">
-                  Отчетник "Достать Хиты"
-                </a>{' '}
-                —{' '}
-                <a href="https://music.yandex.ru/users/ikeashanin">
-                  Ураганный Краш
-                </a>{' '}
-                на Яндекс Музыке
-              </iframe>
-            </div>
-          </div>
-        </section>
 
         <section className="feedback-card" id="feedback" aria-labelledby="feedback-title">
           <h2 id="feedback-title">Нам важно ваше мнение</h2>

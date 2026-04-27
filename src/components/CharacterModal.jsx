@@ -58,7 +58,9 @@ function CharacterModal({ character, onClose }) {
         {!modalPhoto ? <div className="modal-initials">{initials}</div> : null}
 
         <div className="modal-content">
-          <p className="modal-label">{character.label}</p>
+          <p className={`modal-label${character.modalLabelMultiline ? ' is-multiline' : ''}`}>
+            {character.label}
+          </p>
           <h2 id={`modal-title-${character.id}`} className="modal-title">
             {character.name}
           </h2>
