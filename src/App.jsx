@@ -2,8 +2,8 @@ import FamilyTreeCanvas from './components/FamilyTreeCanvas';
 import SuspectPoll from './components/SuspectPoll';
 import { introContent } from './data/familyTree';
 
-const recordPeopleImage = new URL('../promo/пластинка с людьми.png', import.meta.url).href;
-const logoImage = new URL('../promo/ЛОГО.png', import.meta.url).href;
+const recordPeopleImage = new URL('../promo/пластинка с людьми.webp', import.meta.url).href;
+const logoImage = new URL('../promo/ЛОГО.webp', import.meta.url).href;
 const menuLinks = [
   { label: 'Начало', href: '#top' },
   { label: 'Кто виновен', href: '#suspect-poll' },

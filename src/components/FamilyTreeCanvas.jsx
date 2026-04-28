@@ -6,7 +6,7 @@ import {
   STAGE_SIZE,
 } from '../data/familyTree';
 
-const mapTitleImage = new URL('../../promo/Group 49.png', import.meta.url).href;
+const mapTitleImage = new URL('../../promo/Group 49.webp', import.meta.url).href;
 
 const MIN_SCALE = 0.24;
 const MAX_SCALE = 2;
