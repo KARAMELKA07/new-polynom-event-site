@@ -15,12 +15,12 @@ const socialLinks = [
   {
     label: 'Telegram',
     href: 'https://t.me/New_Polynom',
-    iconSrc: 'https://cdn.simpleicons.org/telegram/26A5E4',
+    iconSrc: '/icons/telegram.svg',
   },
   {
     label: 'ВК',
     href: 'https://vk.com/new_polynom',
-    iconSrc: 'https://cdn.simpleicons.org/vk/0077FF',
+    iconSrc: '/icons/vk.svg',
   },
 ];
 
@@ -77,7 +77,7 @@ function App() {
           <p>
             Поделитесь впечатлениями о спектакле, расскажите, что вам особенно
             понравилось, а что можно сделать ещё лучше. Ваша обратная связь
-            помогает нам становиться лучше и делать новые проекты ещё
+            помогает нам делать новые проекты ещё
             интереснее.
           </p>
           <a

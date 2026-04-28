@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700&display=swap');
-
 @font-face {
   font-family: 'Stolzl';
   src: url('/fonts/stolzl-book.otf') format('opentype');
@@ -45,7 +43,7 @@
   --shadow: 0 28px 80px rgba(29, 0, 8, 0.28);
   --font-body: 'Stolzl', 'Segoe UI', sans-serif;
   --font-name: 'Trajan Pro 3', Georgia, serif;
-  --font-heading: 'Rubik', 'Stolzl', sans-serif;
+  --font-heading: 'Stolzl', 'Segoe UI', sans-serif;
   --site-kicker-weight: 700;
   --site-kicker-second-line-weight: 600;
   --site-kicker-main-size: clamp(1.08rem, 4.8vw, 1.4rem);
@@ -60,6 +58,8 @@
   --cta-font-family: var(--font-body);
   --cta-font-size: 0.84rem;
   --cta-font-weight: 700;
+  --page-max-width: 430px;
+  --page-side-gap: 8px;
 }
 
 *,
@@ -137,17 +137,17 @@ a {
 .site-header {
   position: fixed;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
   z-index: 20;
-  width: min(430px, 100vw);
+  width: 100%;
+  max-width: 100%;
   min-height: 58px;
   margin: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 14px;
-  padding: 12px clamp(16px, 5vw, 24px) 10px;
+  padding: 12px max(16px, calc((100vw - var(--page-max-width)) / 2 + 16px)) 10px;
   background:
     linear-gradient(180deg, rgba(77, 0, 17, 0.98), rgba(77, 0, 17, 0.9)),
     url('/site-wallpaper.png');
@@ -228,9 +228,9 @@ a {
 }
 
 .page {
-  width: min(430px, 100vw);
+  width: min(var(--page-max-width), 100vw);
   margin: 0 auto;
-  padding: 92px 8px 36px;
+  padding: 92px var(--page-side-gap) 36px;
 }
 
 .intro-card,
@@ -447,7 +447,9 @@ a {
 }
 
 .poll-card__copy {
-  max-width: 350px;
+  width: 100%;
+  max-width: none;
+  padding: 0 6px;
 }
 
 .poll-card__copy h2 {
@@ -466,7 +468,7 @@ a {
 }
 
 .poll-toggle {
-  width: min(344px, 100%);
+  width: 100%;
   min-height: 38px;
   padding: 9px 18px;
   display: inline-flex;
@@ -651,27 +653,30 @@ a {
 
 .map-toolbar {
   display: grid;
-  justify-items: center;
+  justify-items: stretch;
   gap: 16px;
   margin-bottom: 16px;
   text-align: center;
 }
 
 .map-hint {
-  max-width: 330px;
+  width: 100%;
+  max-width: none;
   margin: 0;
+  padding: 0 6px;
   color: var(--text);
 }
 
 .map-controls {
-  display: flex;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
-  justify-content: center;
   order: 2;
 }
 
 .map-controls button {
-  min-width: 46px;
+  width: 100%;
   min-height: 38px;
   padding: 0 15px;
   border: 1px solid rgba(255, 244, 226, 0.58);
@@ -682,7 +687,6 @@ a {
 }
 
 .map-controls button:last-child {
-  min-width: 92px;
   font-size: 0.92rem;
 }
 
@@ -1101,7 +1105,9 @@ a {
 
 .feedback-card p {
   margin: 14px auto 18px;
-  max-width: 350px;
+  width: 100%;
+  max-width: none;
+  padding: 0 6px;
   color: var(--text-soft);
 }
 
@@ -1117,7 +1123,7 @@ a {
 }
 
 .feedback-card .button {
-  width: min(344px, 100%);
+  width: 100%;
 }
 
 .social-links {
@@ -1171,13 +1177,178 @@ a {
   outline: none;
 }
 
-@media (max-width: 900px) {
-  .map-toolbar {
-    flex-direction: column;
-    align-items: stretch;
+@media (min-width: 721px) {
+  :root {
+    --page-max-width: 760px;
+    --page-side-gap: 16px;
+    --site-kicker-main-size: clamp(1.52rem, 3.4vw, 2.2rem);
+    --site-kicker-line-size: clamp(0.96rem, 2.2vw, 1.38rem);
+    --shared-copy-text-size: 0.94rem;
   }
 
-  .poll-card__header,
+  .site-header {
+    min-height: 70px;
+    padding: 14px 28px 12px;
+    box-shadow: 0 18px 40px rgba(18, 2, 8, 0.28);
+  }
+
+  .site-logo {
+    width: clamp(144px, 24vw, 186px);
+  }
+
+  .site-nav summary {
+    width: 44px;
+    height: 44px;
+  }
+
+  .site-nav summary span {
+    width: 30px;
+  }
+
+  .page {
+    padding: 112px var(--page-side-gap) 42px;
+  }
+
+  .site-kicker {
+    max-width: 740px;
+    margin: 10px auto 24px;
+    padding: 0 18px;
+    line-height: 1.22;
+  }
+
+  .site-kicker__line + .site-kicker__line {
+    margin-top: 10px;
+  }
+
+  .intro-card,
+  .record-hero,
+  .poll-section,
+  .map-section,
+  .playlist-section,
+  .feedback-card,
+  .social-footer {
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .intro-card {
+    padding: 0 28px;
+  }
+
+  .intro-card__lead {
+    max-width: 680px;
+  }
+
+  .record-hero {
+    margin-top: 28px;
+  }
+
+  .record-hero img {
+    width: min(620px, 100%);
+  }
+
+  .map-card,
+  .poll-card,
+  .playlist-card,
+  .feedback-card,
+  .social-card {
+    padding: 28px 24px 24px;
+  }
+
+  .map-viewport {
+    height: clamp(520px, 74vh, 760px);
+    border-radius: 24px;
+  }
+
+  .map-story {
+    width: 320px;
+    top: 58px;
+  }
+
+  .playlist-frame iframe {
+    height: min(556px, 72vh);
+  }
+}
+
+@media (min-width: 1100px) {
+  :root {
+    --page-max-width: 1120px;
+    --page-side-gap: 24px;
+    --site-kicker-main-size: clamp(2rem, 2.7vw, 2.6rem);
+    --site-kicker-line-size: clamp(1.16rem, 1.7vw, 1.54rem);
+    --shared-copy-text-size: 1rem;
+  }
+
+  .site-header {
+    min-height: 76px;
+    padding: 16px 36px 14px;
+  }
+
+  .site-logo {
+    width: 200px;
+  }
+
+  .site-nav__panel {
+    width: 240px;
+    padding: 10px;
+  }
+
+  .page {
+    padding: 120px var(--page-side-gap) 54px;
+  }
+
+  .site-kicker {
+    max-width: 980px;
+    margin-bottom: 28px;
+    padding: 0 24px;
+  }
+
+  .intro-card {
+    max-width: 920px;
+    padding: 0 56px;
+  }
+
+  .intro-card__lead {
+    max-width: 780px;
+  }
+
+  .record-hero img {
+    width: min(760px, 100%);
+  }
+
+  .poll-section,
+  .map-section,
+  .playlist-section,
+  .feedback-card,
+  .social-footer {
+    max-width: 980px;
+  }
+
+  .map-card,
+  .poll-card,
+  .playlist-card,
+  .feedback-card,
+  .social-card {
+    padding: 30px 30px 28px;
+  }
+
+  .map-viewport {
+    height: clamp(560px, 78vh, 860px);
+  }
+
+  .map-story {
+    width: 340px;
+    top: 58px;
+  }
+}
+
+@media (max-width: 900px) {
+  .map-toolbar,
+  .poll-card__header {
+    justify-items: stretch;
+  }
+
   .poll-confirm,
   .poll-result__actions {
     flex-direction: column;
@@ -1185,7 +1356,19 @@ a {
   }
 
   .map-controls {
-    justify-content: flex-end;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 424px) and (max-width: 720px) {
+  .site-kicker {
+    max-width: 560px;
+    padding: 0 14px;
+  }
+
+  .site-kicker__line {
+    white-space: normal;
+    text-wrap: balance;
   }
 }
 
@@ -1233,7 +1416,6 @@ a {
   }
 
   .map-controls button {
-    min-width: 40px;
     min-height: 34px;
     border-radius: 12px;
   }
@@ -1292,5 +1474,87 @@ a {
 @media (max-width: 540px) {
   .poll-options {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 560px) {
+  :root {
+    --page-max-width: 860px;
+    --page-side-gap: 12px;
+  }
+
+  .site-header {
+    min-height: 54px;
+    padding: 10px 18px 9px;
+  }
+
+  .site-logo {
+    width: 118px;
+  }
+
+  .site-nav summary {
+    width: 36px;
+    height: 36px;
+  }
+
+  .site-nav summary span {
+    width: 26px;
+  }
+
+  .page {
+    width: min(var(--page-max-width), 100vw);
+    padding: 78px var(--page-side-gap) 18px;
+  }
+
+  .site-kicker {
+    max-width: 780px;
+    margin: 4px auto 12px;
+    line-height: 1.18;
+  }
+
+  .site-kicker__line + .site-kicker__line {
+    margin-top: 4px;
+  }
+
+  .intro-card {
+    padding: 0 18px;
+  }
+
+  .intro-card__lead {
+    max-width: 780px;
+  }
+
+  .record-hero {
+    margin-top: 14px;
+  }
+
+  .record-hero img {
+    width: min(360px, 44vw);
+  }
+
+  .poll-card,
+  .map-card,
+  .playlist-card,
+  .feedback-card,
+  .social-card {
+    padding-top: 18px;
+    padding-bottom: 18px;
+  }
+
+  .map-section {
+    margin-top: 14px;
+  }
+
+  .map-viewport {
+    height: min(76vh, 420px);
+  }
+
+  .playlist-frame iframe {
+    height: min(72vh, 400px);
+  }
+
+  .modal-card {
+    height: min(500px, calc(100dvh - 20px));
+    min-height: min(440px, calc(100dvh - 20px));
   }
 }

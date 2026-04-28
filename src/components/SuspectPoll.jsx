@@ -19,9 +19,7 @@ function SuspectPoll() {
             Открыть опрос
           </a>
 
-          {suspectPollConfig.note ? (
-            <p className="poll-card__note">{suspectPollConfig.note}</p>
-          ) : null}
+
         </div>
       </div>
     </section>
