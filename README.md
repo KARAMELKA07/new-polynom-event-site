@@ -2,7 +2,7 @@
 
 Адаптивный React-сайт об отчётном концерте вокальной студии New-Polynom.
 
-<video src="C:\Users\zakir\WebstormProjects\new-polynom\сайт на отчетник.mp4"></video>
+[▶ Смотреть видео](<./demo.mp4>)
 
 ## Команды
 
