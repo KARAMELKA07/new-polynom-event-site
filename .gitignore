@@ -3,3 +3,8 @@ dist
 .tmp/
 .DS_Store
 *.local
+.idea/
+.codex_tmp/
+.vscode/
+*.pyc
+__pycache__/

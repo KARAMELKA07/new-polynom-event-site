@@ -953,7 +953,7 @@ a {
 }
 
 .modal-title {
-  margin: 20px 0 0;
+  margin: 16px 0 0;
   text-align: center;
   font-family: var(--font-name);
   font-size: clamp(1.62rem, 6.6vw, 2.25rem);
@@ -976,7 +976,7 @@ a {
 }
 
 .modal-description {
-  margin: 25px auto 0;
+  margin: 16px auto 0;
   max-width: 400px;
   text-align: center;
   font-size: 0.9rem;
