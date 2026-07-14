@@ -2,6 +2,8 @@
 
 Адаптивный React-сайт об отчётном концерте вокальной студии New-Polynom.
 
+<video src="C:\Users\zakir\WebstormProjects\new-polynom\сайт на отчетник.mp4"></video>
+
 ## Команды
 
 ```bash
@@ -16,11 +18,3 @@ npm run build
 - Разметка страницы: `src/App.jsx`
 - Интерактивное древо и модальное окно: `src/components/FamilyTreeCanvas.jsx`
 - Визуальный стиль: `src/styles.css`
-
-## Cloudflare Pages
-
-Для публикации на Cloudflare Pages подойдёт стандартная сборка Vite:
-
-- Build command: `npm run build`
-- Build output directory: `dist`
-- Node version: `20`
